@@ -13,7 +13,7 @@ const userNames = (function () {
   // find the lowest unused "guest" name and claim it
   const getGuestName = () => {
     let name;
-    let nextUserId = 0;
+    let nextUserId = 1;
 
     do {
       name = `Guest ${nextUserId}`;
@@ -33,9 +33,16 @@ const userNames = (function () {
     return res;
   };
 
+  const free = (name) => {
+    if (names[name]) {
+      delete names[name];
+    }
+  };
+
   return {
     get,
     getGuestName,
+    free,
   };
 }());
 

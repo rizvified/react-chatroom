@@ -15,4 +15,17 @@ module.exports = (socket) => {
       text: data.text,
     });
   });
+
+  // notify other clients that a new user has joined
+  socket.broadcast.emit('user:join', {
+    name,
+  });
+
+  // clean up when a user leaves, and broadcast it to other users
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('user:left', {
+      name,
+    });
+    userNames.free(name);
+  });
 };

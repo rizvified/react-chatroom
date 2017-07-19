@@ -16,17 +16,43 @@ class Chatroom extends Component {
   componentDidMount() {
     socket.on('init', this._initialize);
     socket.on('send:message', this._messageRecieve);
+    socket.on('user:join', this._userJoined);
+    socket.on('user:left', this._userLeft);
   }
 
   _initialize = data => {
-    let { users, name } = data;
-    this.setState((state) => ({users, user: name}));
+    const { users, name } = data;
+    this.setState({users, user: name});
   }
 
   _messageRecieve = message => {
-    let { messages } = this.state;
+    const { messages } = this.state;
     messages.push(message);
-    this.setState((state) => ({messages}));
+    this.setState({messages});
+  }
+
+
+  _userJoined = data => {
+  	const { users, messages } = this.state;
+  	const { name } = data;
+  	users.push(name);
+  	messages.push({
+  		user: 'APPLICATION BOT',
+  		text : name +' Joined'
+  	});
+  	this.setState({users, messages});
+  }
+
+  _userLeft = data => {
+  	const { users, messages } = this.state;
+  	const { name } = data;
+  	const index = users.indexOf(name);
+  	users.splice(index, 1);
+  	messages.push({
+  		user: 'APPLICATION BOT',
+  		text : name +' Left'
+  	});
+  	this.setState({users, messages});
   }
 
   handleSubmit = message => {
@@ -50,7 +76,9 @@ class Chatroom extends Component {
           />
         </section>
         <aside className='chatroom__right'>
-          <Users />
+          <Users
+            users={ this.state.users }
+          />
         </aside>
       </main>
     );
