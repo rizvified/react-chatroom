@@ -47,4 +47,12 @@ module.exports = (socket) => {
     name,
     users: userNames.get(),
   });
+
+  // broadcast a user's message to other users
+  socket.on('send:message', (data) => {
+    socket.broadcast.emit('send:message', {
+      user: name,
+      text: data.text,
+    });
+  });
 };
