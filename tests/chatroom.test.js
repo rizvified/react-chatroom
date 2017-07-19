@@ -11,19 +11,4 @@ describe('<Chatroom />', () => {
   it('renders without exploding', () => {
     ReactTestUtils.renderIntoDocument(<Chatroom />);
   });
-
-  it('renders the Conversation', () => {
-    const wrapper = render(<Chatroom />);
-    expect(wrapper.find(Conversation)).toHaveLength(1);
-  });
-
-  it('renders the message Form', () => {
-    const wrapper = render(<Chatroom />);
-    expect(wrapper.find(Form)).toHaveLength(1);
-  });
-
-  it('renders a Users List', () => {
-    const wrapper = render(<Chatroom />);
-    expect(wrapper.find(Users)).toHaveLength(1);
-  });
 });

@@ -9,7 +9,9 @@
   "scripts": {
     "start": "node server",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js --hot --inline",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js --progress --colors"
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js --progress --colors",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "dependencies": {
     "enzyme": "^2.9.1",
