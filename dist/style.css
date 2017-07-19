@@ -1,0 +1,13 @@
+.chatroom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #B8CCC9;
+  border-radius: 5px; }
+
+body {
+  margin: 0;
+  padding: 200px; }
+
+/*# sourceMappingURL=style.css.map*/
