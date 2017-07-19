@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { string, func } from 'prop-types';
 
 class Form extends Component {
   state = {
@@ -32,6 +33,11 @@ class Form extends Component {
       </div>
     );
   }
+}
+
+Form.propTypes = {
+  user: string,
+  onMessageSubmit: func
 }
 
 export default Form;

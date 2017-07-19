@@ -39,18 +39,20 @@ class Chatroom extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className='chatroom'>
-        <main className='chatroom__left'>
-          <Conversation />
+      <main className='chatroom'>
+        <section className='chatroom__left'>
+          <Conversation
+            messages={ this.state.messages }
+          />
           <Form
             onMessageSubmit={ this.handleSubmit }
             user={ this.state.user }
           />
-        </main>
+        </section>
         <aside className='chatroom__right'>
           <Users />
         </aside>
-      </div>
+      </main>
     );
   }
 }
