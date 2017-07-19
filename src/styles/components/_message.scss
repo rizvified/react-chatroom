@@ -1,3 +1,8 @@
 .message {
   padding: 5px 0;
+
+  @at-root #{&}--bot {
+    font-size: 12px;
+    font-style: italic;
+  }
 }

@@ -22,15 +22,16 @@ class Form extends Component {
 
   render() {
     return(
-      <div className='form'>
+      <section className='form'>
         <form onSubmit={this.handleSubmit}>
           <input
+            className='form__input form__input--outline0'
             onChange={this.handleChange}
             value={this.state.text}
             placeholder="enter message"
           />
         </form>
-      </div>
+      </section>
     );
   }
 }

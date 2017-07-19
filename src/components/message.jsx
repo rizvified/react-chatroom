@@ -3,11 +3,16 @@ import { string } from 'prop-types';
 
 class Message extends Component {
   render() {
-    const { user, text } = this.props;
+    const { user, text, type } = this.props;
+    console.log(type);
     return (
       <div className='message'>
-        <strong>{ user } :</strong>
-        <span> { text }</span>
+        <span
+          className={ type === 'bot' ? 'message--bot' : 'message--chat' }
+        >
+          <strong>{ user }: </strong>
+          <span>{ text }</span>
+        </span>
       </div>
     );
   }

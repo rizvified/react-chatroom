@@ -1,19 +1,17 @@
 .chatroom {
+  height: 250px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   border: 2px solid #B8CCC9;
   border-radius: 5px;
-  padding: 10px;
-}
 
-.chatroom__left {
-  display: flex;
-  flex-direction: column;
-}
-
-.chatroom__right {
-  display: flex;
-  flex-direction: column;
+  @at-root #{&}__content {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

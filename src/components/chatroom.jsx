@@ -3,13 +3,11 @@ import io from 'socket.io-client';
 
 import Conversation from './conversation.jsx';
 import Form from './form.jsx';
-import Users from './users.jsx';
 
 const socket = io.connect();
 
 class Chatroom extends Component {
   state = {
-    users: [],
     messages: []
   }
 
@@ -38,7 +36,8 @@ class Chatroom extends Component {
   	users.push(name);
   	messages.push({
   		user: 'APPLICATION BOT',
-  		text : name +' Joined'
+  		text : name +' Joined',
+      type: 'bot'
   	});
   	this.setState({users, messages});
   }
@@ -50,7 +49,8 @@ class Chatroom extends Component {
   	users.splice(index, 1);
   	messages.push({
   		user: 'APPLICATION BOT',
-  		text : name +' Left'
+  		text : name +' Left',
+      type: 'bot'
   	});
   	this.setState({users, messages});
   }
@@ -63,10 +63,9 @@ class Chatroom extends Component {
 	}
 
   render() {
-    console.log(this.state);
     return (
       <main className='chatroom'>
-        <section className='chatroom__left'>
+        <section className='chatroom__content'>
           <Conversation
             messages={ this.state.messages }
           />
@@ -75,11 +74,6 @@ class Chatroom extends Component {
             user={ this.state.user }
           />
         </section>
-        <aside className='chatroom__right'>
-          <Users
-            users={ this.state.users }
-          />
-        </aside>
       </main>
     );
   }

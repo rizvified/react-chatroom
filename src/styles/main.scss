@@ -2,10 +2,25 @@
 @import "components/_chatroom";
 @import "components/_conversation";
 @import "components/_form";
-@import "components/_users";
 @import "components/_message";
 
 body {
   margin: 0;
-  padding: 200px
+  padding: 100px 300px
+
+
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    }
 }

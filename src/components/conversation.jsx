@@ -8,13 +8,13 @@ class Conversation extends Component {
     const data = this.props.messages;
     return (
       <section className='conversation'>
-        <h2> Conversation: </h2>
         {
             data.map((message, index) => (
               <Message
                 key={ index }
                 user={ message.user }
                 text={ message.text }
+                type={ message.type }
               />
               ))
           }
